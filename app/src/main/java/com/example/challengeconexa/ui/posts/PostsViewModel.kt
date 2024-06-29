@@ -15,16 +15,36 @@ class PostsViewModel(application: Application): BaseViewModel(application) {
     val postsLiveData: LiveData<List<Post>>
         get() = _postsLiveData
 
+    private val _postsFilteredLiveData = MutableLiveData<List<Post>>()
+    val postsFilteredLiveData: LiveData<List<Post>>
+        get() = _postsFilteredLiveData
+
+    private val allPosts = mutableListOf<Post>()
+
     fun getPosts() {
         viewModelScope.launch {
             ApiClient.service::getPosts.callApi().collect {
                 if (it.isSuccess){
                     it.getOrNull()?.let { posts ->
+                        allPosts.addAll(posts)
                         _postsLiveData.postValue(posts)
                     }
                 } else
                     onError.postValue(it.exceptionOrNull())
             }
+        }
+    }
+
+    fun getPostsBySearch(search: String) {
+        viewModelScope.launch {
+            if (allPosts.isEmpty()) {
+                _postsFilteredLiveData.postValue(listOf())
+            }
+            val filteredPosts = allPosts.filter { post ->
+                post.title?.contains(search, ignoreCase = true) ?: false ||
+                        post.content?.contains(search, ignoreCase = true) ?: false
+            }
+            _postsFilteredLiveData.postValue(filteredPosts)
         }
     }
 }

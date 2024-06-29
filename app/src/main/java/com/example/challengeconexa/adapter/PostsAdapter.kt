@@ -16,7 +16,7 @@ class PostsAdapter(private val list: List<Post>, val context: Context):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent)
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(list[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindPost(list[position])
 
     override fun getItemCount(): Int = list.size
 
@@ -25,7 +25,7 @@ class PostsAdapter(private val list: List<Post>, val context: Context):
     ) {
         private val binding = ItemPostBinding.bind(itemView)
 
-        fun bind(data: Post) {
+        fun bindPost(data: Post) {
             with(binding) {
                 Glide.with(root.context)
                     .load(data.thumbnail)

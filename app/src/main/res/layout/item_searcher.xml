@@ -7,54 +7,38 @@
     
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPost"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="35dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/margin_app"
+            android:orientation="horizontal"
+            android:weightSum="1"
             android:background="@color/material_dynamic_tertiary70">
-
-            <ImageView
-                android:id="@+id/ivThumbnail"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:contentDescription="Example image"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_error"/>
             
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/tvTitle"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ivThumbnail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
                 style="@style/TextStyleBold"
-                android:layout_marginStart="@dimen/margin_app"
-                android:layout_marginEnd="@dimen/margin_app"
                 android:textSize="@dimen/text_size_big"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="Title post"/>
 
-            <TextView
-                android:id="@+id/tvContent"
-                style="@style/TextStyleBold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
-                android:ellipsize="end"
-                app:layout_constraintTop_toBottomOf="@id/ivThumbnail"
-                android:layout_marginTop="10dp"
-                tools:text="dasdasdnasdiuhasbuadwsgudasgduasgdias duiashgdiuasgduasigdda iasdhasoidhasuidhasu adsuhasdhas asudhasuhda"/>
-            
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_searcher"/>
+
+        </LinearLayout>
         
     </androidx.cardview.widget.CardView>
 

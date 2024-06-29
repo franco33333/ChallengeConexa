@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="posts">Posts</string>
     <string name="users">Users</string>
+    <string name="search">Search</string>
+    <string name="there_was_an_error">There was an error</string>
+    <string name="search_by_title_or_content">Search by title or content</string>
 </resources>
