@@ -26,7 +26,8 @@
                 android:id="@+id/ivPost"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/img_example"
+
+                tools:src="@drawable/img_example"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView

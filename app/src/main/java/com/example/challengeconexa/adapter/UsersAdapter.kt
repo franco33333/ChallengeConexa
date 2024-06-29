@@ -1,18 +1,15 @@
 package com.example.challengeconexa.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengeconexa.R
-import com.example.challengeconexa.data.objects.Post
-import com.example.challengeconexa.data.objects.User
+import com.example.challengeconexa.data.model.User
 import com.example.challengeconexa.databinding.ItemUserBinding
+import com.example.challengeconexa.ui.users.OnUserClicked
 
-class UsersAdapter(private val list: List<User>, val context: Context):
+class UsersAdapter(private val list: List<User>, val onUserClicked: OnUserClicked):
     RecyclerView.Adapter<UsersAdapter.ViewHolder>(){
-
-    lateinit var onUserClicked: (User) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent)
 
@@ -21,7 +18,7 @@ class UsersAdapter(private val list: List<User>, val context: Context):
     override fun getItemCount(): Int = list.size
 
     inner class ViewHolder(parent: ViewGroup): RecyclerView.ViewHolder(
-        LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
     ) {
         private val binding = ItemUserBinding.bind(itemView)
 
@@ -30,7 +27,7 @@ class UsersAdapter(private val list: List<User>, val context: Context):
                 tvName.text = "${data.firstname} ${data.lastname}"
                 tvEmail.text = data.email
                 tvCompanyName.text = data.company?.name
-                ivMap.setOnClickListener { onUserClicked(data) }
+                ivMap.setOnClickListener { onUserClicked.onUserClicked(data) }
             }
         }
     }

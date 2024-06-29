@@ -8,4 +8,7 @@
     <string name="there_was_an_error">There was an error</string>
     <string name="search_by_title_or_content">Search by title or content</string>
     <string name="there_are_no_results_for_this_search">There are no results for this search</string>
+    <string name="icon_map">Icon map</string>
+    <string name="post_detail">Post Detail</string>
+    <string name="user_location">User Location</string>
 </resources>

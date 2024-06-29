@@ -1,7 +1,7 @@
 package com.example.challengeconexa.data.remote
 
-import com.example.challengeconexa.data.objects.Post
-import com.example.challengeconexa.data.objects.User
+import com.example.challengeconexa.data.model.Post
+import com.example.challengeconexa.data.model.User
 import retrofit2.http.GET
 
 interface ApiInterface {

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.challengeconexa.data.objects.Post
+import com.example.challengeconexa.data.model.Post
 import com.example.challengeconexa.data.remote.ApiClient
 import com.example.challengeconexa.data.remote.ApiClient.callApi
 import com.example.challengeconexa.utils.BaseViewModel

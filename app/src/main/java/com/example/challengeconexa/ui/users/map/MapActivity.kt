@@ -5,8 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.challengeconexa.R
-import com.example.challengeconexa.data.objects.User
+import com.example.challengeconexa.data.model.User
 import com.example.challengeconexa.databinding.ActivityMapBinding
+import com.example.challengeconexa.utils.setupToolbar
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -32,7 +33,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setupToolbar()
+        setupToolbar(binding.containerToolbar.toolbar, getString(R.string.user_location))
 
         intent.getStringExtra(ARG_USER).let { user = Gson().fromJson(it, User::class.java) }
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -40,7 +41,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val latLong = LatLng(user.address?.geo?.lat?.toDouble() ?: 0.0, user.address?.geo?.lng?.toDouble() ?: 0.0)
+        val latLong = LatLng(
+            user.address?.geo?.lat?.toDouble() ?: 0.0,
+            user.address?.geo?.lng?.toDouble() ?: 0.0
+        )
         googleMap.addMarker(
             MarkerOptions()
                 .position(latLong)
@@ -53,14 +57,5 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 12f
             )
         )
-    }
-
-    private fun setupToolbar() {
-        binding.containerToolbar.toolbar.title = "User Location"
-        binding.containerToolbar.toolbar.setNavigationIcon(R.drawable.ic_back)
-        setSupportActionBar(binding.containerToolbar.toolbar)
-        binding.containerToolbar.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
     }
 }

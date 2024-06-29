@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.challengeconexa.adapter.UsersAdapter
+import com.example.challengeconexa.data.model.User
 import com.example.challengeconexa.databinding.FragmentUsersBinding
-import com.example.challengeconexa.ui.posts.detail.PostDetailActivity
 import com.example.challengeconexa.ui.users.map.MapActivity
 import com.example.challengeconexa.utils.gone
 import com.example.challengeconexa.utils.visible
 
-class UsersFragment : Fragment() {
+class UsersFragment : Fragment(), OnUserClicked {
 
     private var _binding: FragmentUsersBinding? = null
     private val binding get() = _binding!!
@@ -23,9 +23,7 @@ class UsersFragment : Fragment() {
             usersLiveData.observe(this@UsersFragment) { user ->
                 binding.progressBar.gone()
                 binding.tvError.gone()
-                val adapter = UsersAdapter(user, requireContext())
-                adapter.onUserClicked = { startActivity(MapActivity.getIntent(requireContext(), it)) }
-                binding.rvUsers.adapter = adapter
+                binding.rvUsers.adapter = UsersAdapter(user, this@UsersFragment)
             }
             onError.observe(this@UsersFragment) {
                 binding.progressBar.gone()
@@ -49,5 +47,9 @@ class UsersFragment : Fragment() {
 
         binding.progressBar.visible()
         viewModel.getUsers()
+    }
+
+    override fun onUserClicked(user: User) {
+        startActivity(MapActivity.getIntent(requireContext(), user))
     }
 }

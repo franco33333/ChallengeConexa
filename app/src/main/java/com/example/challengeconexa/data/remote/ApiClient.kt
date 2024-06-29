@@ -15,6 +15,8 @@ import kotlin.reflect.KSuspendFunction1
 
 object ApiClient {
 
+    private const val BASE_URL = "https://jsonplaceholder.org/"
+
     var service = createService()
 
     private fun createService(): ApiInterface {
@@ -25,10 +27,7 @@ object ApiClient {
             .create()
 
         val sRestAdapter = Retrofit.Builder()
-            .baseUrl(
-                "https://jsonplaceholder.org/"
-            )
-            //.addConverterFactory(ScalarsConverterFactory.create())
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(httpClient)
             .build()

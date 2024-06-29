@@ -46,13 +46,13 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -67,4 +67,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // Maps SDK for Android
     implementation(libs.play.services.maps)
+    //Mockito
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.core)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.core.testing)
 }

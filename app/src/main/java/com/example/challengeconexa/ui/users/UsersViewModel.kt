@@ -4,7 +4,8 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.challengeconexa.data.objects.User
+import com.example.challengeconexa.data.model.Post
+import com.example.challengeconexa.data.model.User
 import com.example.challengeconexa.data.remote.ApiClient
 import com.example.challengeconexa.data.remote.ApiClient.callApi
 import com.example.challengeconexa.utils.BaseViewModel
@@ -16,15 +17,20 @@ class UsersViewModel(application: Application): BaseViewModel(application) {
         get() = _usersLiveData
 
     fun getUsers() {
-        viewModelScope.launch {
-            ApiClient.service::getUsers.callApi().collect {
-                if (it.isSuccess){
-                    it.getOrNull()?.let { users ->
-                        _usersLiveData.postValue(users)
-                    }
-                } else
-                    onError.postValue(it.exceptionOrNull())
-            }
-        }
+//        viewModelScope.launch {
+//            ApiClient.service::getUsers.callApi().collect {
+//                if (it.isSuccess){
+//                    it.getOrNull()?.let { users ->
+//                        _usersLiveData.postValue(users)
+//                    }
+//                } else
+//                    onError.postValue(it.exceptionOrNull())
+//            }
+//        }
+        _usersLiveData.value = listOf(User(5))
+    }
+
+    fun getX(): String {
+        return "x"
     }
 }

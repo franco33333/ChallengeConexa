@@ -3,12 +3,12 @@ package com.example.challengeconexa.ui.posts.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.challengeconexa.R
-import com.example.challengeconexa.data.objects.Post
+import com.example.challengeconexa.data.model.Post
 import com.example.challengeconexa.databinding.ActivityPostDetailBinding
+import com.example.challengeconexa.utils.setupToolbar
 import com.google.gson.Gson
 
 class PostDetailActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class PostDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setupToolbar()
+        setupToolbar(binding.containerToolbar.toolbar, getString(R.string.post_detail))
 
         intent.getStringExtra(ARG_POST).let { post = Gson().fromJson(it, Post::class.java) }
         with(binding) {
@@ -38,15 +38,6 @@ class PostDetailActivity : AppCompatActivity() {
             tvTitle.text = post.title
             tvDescription.text = post.content
             tvDate.text = post.updatedAt
-        }
-    }
-
-    private fun setupToolbar() {
-        binding.containerToolbar.toolbar.title = "Post Detail"
-        binding.containerToolbar.toolbar.setNavigationIcon(R.drawable.ic_back)
-        setSupportActionBar(binding.containerToolbar.toolbar)
-        binding.containerToolbar.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
         }
     }
 }
