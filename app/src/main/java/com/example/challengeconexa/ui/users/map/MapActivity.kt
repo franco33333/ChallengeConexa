@@ -45,7 +45,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             MarkerOptions()
                 .position(latLong)
                 .title(user.firstname)
-        )
+                .snippet(user.email)
+        )?.showInfoWindow()
         googleMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 latLong,

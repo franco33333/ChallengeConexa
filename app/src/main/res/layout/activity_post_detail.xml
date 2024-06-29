@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/color_primary"
     tools:context=".ui.posts.detail.PostDetailActivity">
 
     <include
@@ -34,6 +35,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Titulo"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_big"
                 android:layout_marginHorizontal="@dimen/margin_app"/>
 
@@ -44,6 +46,7 @@
                 android:fontFamily="@font/plus_jakarta_sans_italic"
                 tools:text="Descripcion  dasdasdasdasd assdasdasdas adadasdas asdasdas"
                 android:layout_marginHorizontal="@dimen/margin_app"
+                android:textColor="@color/white"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -54,6 +57,7 @@
                 android:fontFamily="@font/plus_jakarta_sans_semi_bold"
                 android:layout_gravity="end"
                 android:layout_marginHorizontal="@dimen/margin_app"
+                android:textColor="@color/color_text"
                 android:layout_marginTop="5dp"/>
 
         </LinearLayout>

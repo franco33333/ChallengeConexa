@@ -19,18 +19,20 @@ class PostsViewModel(application: Application): BaseViewModel(application) {
     val postsFilteredLiveData: LiveData<List<Post>>
         get() = _postsFilteredLiveData
 
-    private val allPosts = mutableListOf<Post>()
+    private lateinit var allPosts: List<Post>
 
     fun getPosts() {
         viewModelScope.launch {
-            ApiClient.service::getPosts.callApi().collect {
-                if (it.isSuccess){
-                    it.getOrNull()?.let { posts ->
-                        allPosts.addAll(posts)
-                        _postsLiveData.postValue(posts)
-                    }
-                } else
-                    onError.postValue(it.exceptionOrNull())
+            if (!::allPosts.isInitialized) {
+                ApiClient.service::getPosts.callApi().collect {
+                    if (it.isSuccess){
+                        it.getOrNull()?.let { posts ->
+                            allPosts = posts
+                            _postsLiveData.postValue(posts)
+                        }
+                    } else
+                        onError.postValue(it.exceptionOrNull())
+                }
             }
         }
     }
