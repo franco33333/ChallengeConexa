@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.challengeconexa.data.model.Post
-import com.example.challengeconexa.data.remote.ApiClient
-import com.example.challengeconexa.data.remote.ApiClient.callApi
+import com.example.challengeconexa.data.repository.JsonPlaceholderRepository
 import com.example.challengeconexa.utils.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -19,19 +18,21 @@ class PostsViewModel(application: Application): BaseViewModel(application) {
     val postsFilteredLiveData: LiveData<List<Post>>
         get() = _postsFilteredLiveData
 
+    private val repository = JsonPlaceholderRepository()
+
     private lateinit var allPosts: List<Post>
 
     fun getPosts() {
         viewModelScope.launch {
             if (!::allPosts.isInitialized) {
-                ApiClient.service::getPosts.callApi().collect {
-                    if (it.isSuccess){
-                        it.getOrNull()?.let { posts ->
-                            allPosts = posts
-                            _postsLiveData.postValue(posts)
-                        }
-                    } else
-                        onError.postValue(it.exceptionOrNull())
+                val response = repository.getPosts()
+                if (response?.isSuccessful == true) {
+                    response.body()?.let { posts ->
+                        allPosts = posts
+                        _postsLiveData.postValue(posts)
+                    }
+                } else {
+                    onError.postValue(Exception(response?.message()))
                 }
             }
         }
