@@ -18,3 +18,27 @@ La ultima pantalla que existe es la pantalla del mapa donde se muestra la locali
 
 ## Consideraciones
 Se utilizo la version de Android Studio Koala | 2024.1.1 - June 10, 2024.
+
+## Imagenes
+* Icono de la aplicacion
+* ![AppLogo](https://github.com/franco33333/ChallengeConexa/assets/58864574/37fcf500-1ac1-4d67-b19b-76a4a0e0399f)
+  
+* Listado de Posts
+* ![FragmentPost](https://github.com/franco33333/ChallengeConexa/assets/58864574/c8397423-ef91-45fc-bc18-0da97f7836ec)
+  
+* Busqueda de Posts
+* ![FragmentPostSearch](https://github.com/franco33333/ChallengeConexa/assets/58864574/1c114a28-a80f-493d-bac2-67a85fcadf59)
+  
+* Busqueda sin resultados de Posts
+* ![FragmentPostSearchNoResults](https://github.com/franco33333/ChallengeConexa/assets/58864574/3f312105-0999-47f1-a74f-864b36a96fd3)
+  
+* Detalle de un Post
+* ![ActivityPostDetail](https://github.com/franco33333/ChallengeConexa/assets/58864574/429fb762-6501-411a-a4f4-88f898bd14ed)
+  
+* Listado de Users
+* ![FragmentUser](https://github.com/franco33333/ChallengeConexa/assets/58864574/a7114210-ba08-4f90-bdf1-93b444a61daf)
+  
+* Localizacion de un Usuario
+* ![ActivityMap](https://github.com/franco33333/ChallengeConexa/assets/58864574/87fe0cc7-d7b0-496f-8090-1b2687e08a36)
+  
+
