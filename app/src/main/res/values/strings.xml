@@ -11,4 +11,5 @@
     <string name="icon_map">Icon map</string>
     <string name="post_detail">Post Detail</string>
     <string name="user_location">User Location</string>
+    <string name="example_image">Example image</string>
 </resources>

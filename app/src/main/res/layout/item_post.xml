@@ -25,7 +25,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:contentDescription="Example image"
+                android:contentDescription="@string/example_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_error"/>
             
